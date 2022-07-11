@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Hudya
+ * @author User
  */
 public class LogoutServlet extends HttpServlet {
 
@@ -38,8 +38,7 @@ public class LogoutServlet extends HttpServlet {
                 response.sendRedirect("login");
                 return;
             }
-
-						session.removeAttribute("id");
+            session.removeAttribute("id");
             session.removeAttribute("name");
             session.removeAttribute("username");
             session.removeAttribute("isLoggedIn");
@@ -49,7 +48,7 @@ public class LogoutServlet extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -87,5 +86,4 @@ public class LogoutServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

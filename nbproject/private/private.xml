@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/src/java/Query/InfoBooksQuery.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/src/java/Servlet/TransactionServlet2.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/src/java/Controller/BaseController.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/web/views/layouts/footer.jsp</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/src/java/Query/UserQuery.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/web/views/login.jsp</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/web/views/layouts/scripts2.jsp</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/web/views/TransactionInfo.jsp</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/web/views/layouts/head.jsp</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/web/views/layouts/get_book_title.jsp</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/web/views/eror.jsp</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/web/views/home.jsp</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/web/public/assets/backend/main.css</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/src/java/Servlet/ErorrServlet.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/src/java/Query/TranQuery.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/src/java/Servlet/LogoutServlet.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/web/index.html</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/web/views/layouts/navbar.jsp</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/src/java/Servlet/LoginServlet.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/src/java/Controller/TranController.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/src/java/Servlet/IndexServlet.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/src/java/Model/InfoBooksModel.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/src/java/Controller/InfoBooksController.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/web/views/layouts/scripts.jsp</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/src/java/Controller/UserController.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/library/web/views/layouts/scripts_getbooks.jsp</file>
+        </group>
+    </open-files>
+</project-private>

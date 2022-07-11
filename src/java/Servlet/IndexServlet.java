@@ -13,10 +13,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Hudya
+ * @author User
  */
 public class IndexServlet extends HttpServlet {
 
@@ -36,9 +37,14 @@ public class IndexServlet extends HttpServlet {
             DBConnection conn = new DBConnection();
             System.out.println(conn.open());
             
-            /* TODO output your page here. You may use following sample code. */
-            RequestDispatcher dispatch = request.getRequestDispatcher("/views/index.jsp");
+            HttpSession session = request.getSession(true);
+            if(session.getAttribute("isLoggedIn") != null){
+            RequestDispatcher dispatch = request.getRequestDispatcher("/views/home.jsp");
             dispatch.forward(request, response);
+            }
+            else{ response.sendRedirect("login");}
+            /* TODO output your page here. You may use following sample code. */
+            
         }
     }
 

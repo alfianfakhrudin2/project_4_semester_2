@@ -38,12 +38,11 @@ public class LoginServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession(true);
             if (session.getAttribute("isLoggedIn") != null) {
-                response.sendRedirect("index");
+                response.sendRedirect("home");
                 return;
             }
-            
-            RequestDispatcher dispatch = request.getRequestDispatcher("/views/login.jsp");   
-            dispatch.forward(request, response);
+            else {RequestDispatcher dispatch = request.getRequestDispatcher("/views/login.jsp");   
+            dispatch.forward(request, response);}
         }
     }
 
@@ -97,13 +96,13 @@ public class LoginServlet extends HttpServlet {
                 }
                 
                 String name = rs.getString("name");
-								session.setAttribute("id", rs.getString("id"));
+		session.setAttribute("id", rs.getString("id"));
                 session.setAttribute("username", username);
                 session.setAttribute("name", name);
                 session.setAttribute("isLoggedIn", true);
                 session.setAttribute("success", "Hello, welcome " + name + "!");
                 
-                response.sendRedirect("index");
+                response.sendRedirect("home");
             }
             else {
                 session.setAttribute("errors", "Username or password is invalid!");

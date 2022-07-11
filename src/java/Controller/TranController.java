@@ -1,12 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controller;
-
 import java.sql.ResultSet;
-import BooksQuery.TranQuery;
-
-
+import Query.TranQuery;
 /**
  *
- * @author Hudya
+ * @author User
  */
 public class TranController extends BaseController {
       

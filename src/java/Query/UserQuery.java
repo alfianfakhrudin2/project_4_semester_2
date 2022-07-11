@@ -5,11 +5,12 @@
  */
 package Query;
 
+
+
 /**
  *
- * @author Fauzan
+ * @author User
  */
 public class UserQuery {
-    
-    public String getByUsername = "SELECT * FROM users WHERE username = ?";
+    public String getByUsername = "SELECT * FROM users WHERE username = ?";  
 }
