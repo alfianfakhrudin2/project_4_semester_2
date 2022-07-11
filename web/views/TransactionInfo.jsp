@@ -1,7 +1,7 @@
 <%-- 
     Document   : create
     Created on : Jun 29, 2022, 10:59:12 PM
-    Author     : user
+    Author     : Hudya
 --%>
 
 <%@page import="Controller.TranController"%>
@@ -56,7 +56,7 @@ error:function (){}
                                         <div class="row pt-5">
                                             <div class="col-12">
                                                 <form method="POST" action="create">
-                                                           <div class="mb-3">
+                                                    <div class="mb-3">
                                                         <label class="form-label">Book ID</label>
                                                         <input type="text" class="form-control" placeholder="Masukkan ID Buku..." name="bookid" id="bookid" onblur="getbook()" required>
                                                     </div>
@@ -91,7 +91,7 @@ error:function (){}
                                                         </div>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <button type="submit" class="btn btn-primary btn-small btn-rounded">Submit</button>
+                                                        <button type="submit" class="btn btn-primary btn-small btn-rounded">Pinjam</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -145,3 +145,24 @@ error:function (){}
 
                            
             </div>
+            
+           
+            
+           
+          
+        </main>
+
+
+        <jsp:include page='layouts/footer.jsp'></jsp:include>
+        <jsp:include page='layouts/scripts.jsp'></jsp:include>
+        <script src="https://unpkg.com/js-datepicker"></script> 
+        <script>
+            const picker = datepicker('#date', {
+                formatter: (input, date, instance) => {
+                    input.value = date.toLocaleDateString(); // => '1/1/2099'
+                }
+            })
+        </script>
+
+    </body>
+</html>
