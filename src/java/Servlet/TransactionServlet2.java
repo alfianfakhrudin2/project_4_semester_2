@@ -5,6 +5,8 @@
  */
 package Servlet;
 
+import Controller.TranController;
+import Model.TransModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -15,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author User
+ * @author Hudya
  */
 public class TransactionServlet2 extends HttpServlet {
 
@@ -64,8 +66,31 @@ public class TransactionServlet2 extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            String Books_ID = request.getParameter("Books_ID");
+            String Borrower_Name = request.getParameter("Borrower_Name");
+            String Borrow_Date = request.getParameter("Borrow_Date");
+            String Return_Date = request.getParameter("Return_Date");
+
+            TransModel model = new TransModel();
+            model.setBooks_ID(Books_ID);
+            model.setBorrower_Name(Borrower_Name);
+            model.setBorrow_Date(Borrow_Date);
+            model.setReturn_Date(Return_Date);
+
+            TranController pc = new TranController();
+            Boolean res = pc.create(model);
+
+            if (res) {
+                response.sendRedirect("transaction");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
+    
+    
 
     /**
      * Returns a short description of the servlet.
@@ -78,3 +103,5 @@ public class TransactionServlet2 extends HttpServlet {
     }// </editor-fold>
 
 }
+
+
