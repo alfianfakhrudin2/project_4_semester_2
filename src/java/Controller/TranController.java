@@ -32,9 +32,39 @@ public class TranController extends BaseController {
         
         return this.preparedStatement(map, sql);
     }
-
- 
     
+    public ResultSet getById(String Books_ID) {
+        String sql = this.querytran.getById;
+        
+        Map<Integer, Object> map = new HashMap<>();
+        map.put(1, Books_ID);
+        
+        return this.getWithParameter(map, sql);
+    }
+    
+    public boolean update(String Books_ID, TransModel model) throws ParseException {
+        
+        Map<Integer, Object> map = new HashMap<>();
+        map.put(1, model.getBooks_ID());
+        map.put(2, model.getBorrower_Name());
+        map.put(3, model.getBorrow_Date());
+        map.put(4, model.getReturn_Date());
+     
+        
+        String sql = this.querytran.update;
+        
+        return this.preparedStatement(map, sql);
+    }
+    
+    public boolean delete(String Books_ID) throws ParseException {
+        Map<Integer, Object> map = new HashMap<>();
+        map.put(1, Books_ID);
+        
+        String sql = this.querytran.delete;
+        return this.preparedStatement(map, sql);
+    }
+    
+       
 
 }
 
