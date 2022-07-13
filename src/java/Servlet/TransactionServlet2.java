@@ -1,157 +1,107 @@
-<%-- 
-    Document   : create
-    Created on : Jun 29, 2022, 10:59:12 PM
-    Author     : Hudya
---%>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Servlet;
 
-<%@page import="Controller.TranController"%>
-<%@page import="Controller.BooksController"%>
-<%@page import="java.sql.ResultSet"%>
-<%--<%@ taglib prefix="c" uri="http://java.sun/com/jstl/core" %>--%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <jsp:include page='layouts/head.jsp'>
-            <jsp:param name="title" value="Homepage" />
-        </jsp:include>
-        <style>
-            .input-group-append {
-                cursor: pointer;
-            }
-        </style>
-        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-        <link rel="stylesheet" href="https://unpkg.com/js-datepicker/dist/datepicker.min.css"> 
-        
-     
+import Controller.TranController;
+import Model.TransModel;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+/**
+ *
+ * @author Hudya
+ */
+public class TransactionServlet2 extends HttpServlet {
 
-    </head>
-    <body class="d-flex flex-column h-100">
-        <jsp:include page='layouts/navbar.jsp'></jsp:include>
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            RequestDispatcher dispatch = request.getRequestDispatcher("/views/TransactionInfo.jsp");
+            dispatch.forward(request, response);
+        }
+    }
 
-        <!-- Begin page content -->
-        <main class="flex-shrink-0">
-            <div class="container">
-                <div class="row">
-                    
-                                <div class="col-12">
-                                    <div class="col-6" style="display: inline-block;">
-                                        <h1 class="mt-5">Tambah Peminjaman</h1>
-                                        <p class="lead">Tambah Peminjaman baru pada sistem Libraryum</p>
-                                        <div class="row pt-5">
-                                            <div class="col-12">
-                                                <form method="POST" action="TransactionInfo">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Book ID</label>
-                                                        <input type="text" class="form-control" placeholder="Masukkan ID Buku..." name="bookid" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Borrower Name</label>
-                                                        <input type="text" class="form-control" placeholder="Masukkan nama peminjam..." name="BorrowName" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Borrow Date</label>
-                                                        <div class="input-group date" id="datepicker">
-                                                            <input type="text" class="form-control" id="dates" name="borrow date" required />
-                                                            <span class="input-group-append">
-                                                                <span class="input-group-text bg-light d-block">
-                                                                    <i class='bx bxs-calendar'></i>
-                                                                </span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Return Date</label>
-                                                        <div class="input-group date" id="datepicker">
-                                                            <input type="text" class="form-control" id="date" name="return date" required />
-                                                            <span class="input-group-append">
-                                                                <span class="input-group-text bg-light d-block">
-                                                                    <i class='bx bxs-calendar'></i>
-                                                                </span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <button type="submit" class="btn btn-primary btn-small btn-rounded">Pinjam</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                        
-             <%
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try{
+            String Books_ID = request.getParameter("Books_ID");
+            String Borrower_Name = request.getParameter("Borrower_Name");
+            String Borrow_Date = request.getParameter("Borrow_Date");
+            String Return_Date = request.getParameter("Return_Date");
+
+            TransModel model = new TransModel();
+            model.setBooks_ID(Books_ID);
+            model.setBorrower_Name(Borrower_Name);
+            model.setBorrow_Date(Borrow_Date);
+            model.setReturn_Date(Return_Date);
+
             TranController pc = new TranController();
-            ResultSet bs = pc.gets();
-            %>
-            
-                                    <div class="col-6" style=" float: right; padding-left: 3rem; ">
-                                        <h1 class="mt-5">Daftar Peminjaman Libraryum</h1>
-                                        <p class="lead">Peminjaman hanya dilakukan pada hari kerja, hari Minggu dan Sabtu libur.</p>
-                                        <div class="row pt-5">
-                                            <div class="col-12">
-                                                <table class="table table-striped table-hover">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Books ID.</th>
-                                                            <th>Borrower Name</th>
-                                                            <th>Borrow Date</th>
-                                                            <th>Return Date</th>
-                                                            <th>Aksi</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <% while(bs.next()) { 
-                                                        %>
-                                                        <tr>
-                                                            <td><%= bs.getString("Books_ID") %></td>
-                                                            <td><%= bs.getString("Borrower_Name") %></td>
-                                                            <td><%= bs.getString("Borrow_Date") %></td>
-                                                            <td><%= bs.getString("Return_Date") %></td>
-                                                            <td>
-                                                                <a href="#" class="btn btn-sm btn-info">Edit</a>
-                                                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                                                            </td>
-                                                        </tr>
-                                                        <% } %>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
+            Boolean res = pc.create(model);
 
-                                </div>
-                    
-                </div>
+            if (res) {
+                response.sendRedirect("transaction");
+            }
 
-                           
-            </div>
-            
-           
-            
-           
-          
-        </main>
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
 
 
-        <jsp:include page='layouts/footer.jsp'></jsp:include>
-        <jsp:include page='layouts/scripts.jsp'></jsp:include>
-        <script src="https://unpkg.com/js-datepicker"></script> 
-        <script>
-            const picker = datepicker('#dates', {
-                formatter: (input, date, instance) => {
-                    input.value = date.toLocaleDateString(); // => '1/1/2099'
-                }
-            })
-        </script>
-        <script>
-            const pickers = datepicker('#date', {
-                formatter: (input, date, instance) => {
-                    input.value = date.toLocaleDateString(); // => '1/1/2099'
-                }
-            })
-        </script>
-        
-
-    </body>
-</html>
