@@ -4,11 +4,13 @@
     Author     : Hudya
 --%>
 
+<%@page import="Model.TransModel"%>
 <%@page import="Controller.TranController"%>
 <%@page import="Controller.BooksController"%>
 <%@page import="java.sql.ResultSet"%>
 <%--<%@ taglib prefix="c" uri="http://java.sun/com/jstl/core" %>--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,19 +43,19 @@
                                         <p class="lead">Tambah Peminjaman baru pada sistem Libraryum</p>
                                         <div class="row pt-5">
                                             <div class="col-12">
-                                                <form method="POST" action="TransactionInfo">
+                                                <form method="POST" action="TransactionInfo.jsp">
                                                     <div class="mb-3">
                                                         <label class="form-label">Book ID</label>
-                                                        <input type="text" class="form-control" placeholder="Masukkan ID Buku..." name="bookid" required>
+                                                        <input type="text" class="form-control" placeholder="Masukkan ID Buku..." name="Books_ID" required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label">Borrower Name</label>
-                                                        <input type="text" class="form-control" placeholder="Masukkan nama peminjam..." name="BorrowName" required>
+                                                        <input type="text" class="form-control" placeholder="Masukkan nama peminjam..." name="Borrower_Name" required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label">Borrow Date</label>
                                                         <div class="input-group date" id="datepicker">
-                                                            <input type="text" class="form-control" id="dates" name="borrow date" required />
+                                                            <input type="text" class="form-control" id="dates" name="Borrow_Date" required />
                                                             <span class="input-group-append">
                                                                 <span class="input-group-text bg-light d-block">
                                                                     <i class='bx bxs-calendar'></i>
@@ -64,7 +66,7 @@
                                                     <div class="mb-3">
                                                         <label class="form-label">Return Date</label>
                                                         <div class="input-group date" id="datepicker">
-                                                            <input type="text" class="form-control" id="date" name="return date" required />
+                                                            <input type="text" class="form-control" id="date" name="Return_Date" required />
                                                             <span class="input-group-append">
                                                                 <span class="input-group-text bg-light d-block">
                                                                     <i class='bx bxs-calendar'></i>
@@ -73,7 +75,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <button type="submit" class="btn btn-primary btn-small btn-rounded">Pinjam</button>
+                                                        <button type="submit" name="submit" class="btn btn-primary btn-small btn-rounded">Pinjam</button>
                                                     </div>
                                                 </form>
                                             </div>
