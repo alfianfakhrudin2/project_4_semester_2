@@ -1,106 +1,119 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Servlet;
+<%-- 
+    Document   : create
+    Created on : Jun 29, 2022, 10:59:12 PM
+    Author     : Hudya
+--%>
+<%@page import="Controller.TranController"%>
+<%@page import="Helper.StringHelper"%>
+<%@page import="java.sql.ResultSet"%>
+<%--<%@ taglib prefix="c" uri="http://java.sun/com/jstl/core" %>--%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <jsp:include page='layouts/head.jsp'>
+            <jsp:param name="title" value="Homepage" />
+        </jsp:include>
+        <style>
+            .input-group-append {
+                cursor: pointer;
+            }
+        </style>
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://unpkg.com/js-datepicker/dist/datepicker.min.css">
+        
+    </head>
+    <body class="d-flex flex-column h-100">
+        <jsp:include page='layouts/navbar.jsp'></jsp:include>
 
-import Controller.TranController;
-import Model.TransModel;
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-/**
- *
- * @author Hudya
- */
-public class EditServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            RequestDispatcher dispatch = request.getRequestDispatcher("/views/EditTransaction.jsp");
-            dispatch.forward(request, response);
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
+        <%
             String Books_ID = request.getParameter("id");
-            String Borrower_Name = request.getParameter("borrower_name");
-            String Borrow_Date = request.getParameter("borrow_date");
-            String Return_Date = request.getParameter("return_date");
-            
-
-            TransModel model = new TransModel();
-            model.setBooks_ID(Books_ID);
-            model.setBorrower_Name(Borrower_Name);
-            model.setBorrow_Date(Borrow_Date);
-            model.setReturn_Date(Return_Date);
-           
-
-            TranController pc = new TranController();
-            Boolean res = pc.update(Books_ID, model);
-
-
-            if (res) {
+            if (Books_ID == null || Books_ID.equals("")) {
                 response.sendRedirect("transaction");
             }
+            TranController pc = new TranController();
+            ResultSet rs = pc.getById(Books_ID);
+            
+            System.out.println(rs);
+            
+            if (!rs.isBeforeFirst()) {
+                response.sendRedirect("transaction");
+            }
+            
+        %>
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
+        <% while(rs.next()) { %>
+        <!-- Begin page content -->
+        <main class="flex-shrink-0">
+            <div class="container">
+                <h1 class="mt-5">Edit Peminjaman - <%= rs.getString("borrower_name") %></h1>
+                <p class="lead">Edit Peminjaman <%= rs.getString("borrower_name")  %> pada sistem aplikasi produk</p>
+                <div class="row pt-5">
+                    <div class="col-12">
+                        <form method="POST" action="edit">
+                            <input type="hidden" name="id" value="<%= rs.getString("id")%>" />
+                            <div class="mb-3">
+                                <label class="form-label">Borrower Name</label>
+                                <input type="text" class="form-control" 
+                                       placeholder="Masukkan nama peminjam..." name="name" required
+                                       value="<%= rs.getString("borrower_name")%>"
+                                       >
+                            </div>
+                           <div class="mb-3">
+                                <label class="form-label">Borrow Date</label>
+                                <div class="input-group date" id="datepicker">
+                                    <input type="text" class="form-control" id="date" name="Return_Date" required
+                                           value="<%= StringHelper.modifyDateIntoDatepickers(rs.getString("borrow_date")) %>"
+                                    />
+                                    <span class="input-group-append">
+                                        <span class="input-group-text bg-light d-block">
+                                            <i class='bx bxs-calendar'></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Return Date</label>
+                                <div class="input-group date" id="datepicker">
+                                    <input type="text" class="form-control" id="dates" name="Return_Date" required
+                                           value="<%= StringHelper.modifyDateIntoDatepicker(rs.getString("return_date")) %>"
+                                    />
+                                    <span class="input-group-append">
+                                        <span class="input-group-text bg-light d-block">
+                                            <i class="bx bxs-calendar"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary btn-small btn-rounded">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <% } %>
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
-}
+        <jsp:include page='layouts/footer.jsp'></jsp:include>
+        <jsp:include page='layouts/scripts.jsp'></jsp:include>
+        <script src="https://unpkg.com/js-datepicker"></script> 
+        <script>
+            const picker = datepicker('#date', {
+                formatter: (input, date, instance) => {
+                    input.value = date.toLocaleDateString(); // => '1/1/2099'
+                }
+            )}
+        </script>
+        <script>
+            const picker = datepicker('#dates', {
+                formatter: (input, date, instance) => {
+                    input.value = date.toLocaleDateString(); // => '1/1/2099'
+                }
+            })
+        </script>
+
+    </body>
+</html>
