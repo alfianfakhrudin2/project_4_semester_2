@@ -5,6 +5,7 @@
  */
 package Servlet;
 
+import Config.DBConnection;
 import Controller.TranController;
 import Model.TransModel;
 import java.io.IOException;
@@ -73,13 +74,14 @@ public class TransactionServlet2 extends HttpServlet {
             String Return_Date = request.getParameter("Return_Date");
 
             TransModel model = new TransModel();
+
             model.setBooks_ID(Books_ID);
             model.setBorrower_Name(Borrower_Name);
             model.setBorrow_Date(Borrow_Date);
             model.setReturn_Date(Return_Date);
 
             TranController pc = new TranController();
-            Boolean res = pc.create(model);
+            Boolean res = pc.creates(model);
 
             if (res) {
                 response.sendRedirect("transaction");
