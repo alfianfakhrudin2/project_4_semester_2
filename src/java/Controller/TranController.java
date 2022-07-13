@@ -1,4 +1,3 @@
-
 package Controller;
 
 import java.sql.ResultSet;
@@ -33,6 +32,9 @@ public class TranController extends BaseController {
         
         return this.preparedStatement(map, sql);
     }
+
+ 
+    
 
 }
 
