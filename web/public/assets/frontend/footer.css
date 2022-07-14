@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 12, 2022, 5:29:37 PM
+    Author     : User
+*/
+:root{
+    --primary : #edf2fc;
+    --fonts: #212121;
+}
+.modegelap {
+    --primary: #282a36;
+    --fonts: whitesmoke;
+}
+footer {
+    background: var(--primary);
+    color:var(--fonts);
+    position: relative;
+    height: 5rem;
+    bottom: 0;
+    width: 100%;
+}
