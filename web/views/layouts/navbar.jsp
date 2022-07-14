@@ -11,10 +11,20 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>navbar</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css" />
+        <link rel="stylesheet" href="public/assets/frontend/navbar.css">
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+            :root{
+             --dd: #fff;
+             --fonts: #212121;
+             
+            }
+            .modegelap {
+              --dd: #2C3639;
+              --fonts: whitesmoke;
+            }
             .navbar{
-                background-color: #2f4f4f;
+                background-color: var();
                 height: 100%;
             }
             .navbar-brand img{
@@ -39,26 +49,52 @@
                 height: 150px;
                 font-size: 30px;
             }
+            .pekok1{
+                background-color: white;
+                color: black;
+            }
+
+            .pedo{
+                width: 53px;
+            }
+            .pelor{
+                display: flex;
+            }
+            .hr{
+                border-bottom: solid 5px;
+            }
+            .ikonlogout{
+                width: 30px;
+                color: red;
+            }
+            .bgr{
+                background:  var(--dd);
+                color: var(--fonts);
+            }
             .pepe{
                 color: white;
                 font-size: 1.5rem;
             }
-            .pekok{
-                background-color: red;
-                color: white;
+            .napbar{
+                margin-right: 80px
             }
+            
         </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
+                
+                <!-- Dropdown -->
                 <div class="nav-item dropdown pepe">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="bi bi-person-circle iconuse"></i>
                       <%= request.getSession(true).getAttribute("name") %>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-dark pekok" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+                    <ul class="dropdown-menu bgr" aria-labelledby="navbarDropdown">
+                        <li class="pelor peko1"><img class="dropdown-item pedo" src="${pageContext.request.contextPath}/img/moon.png" id="icon">Theme</li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item bgr pelor peko1" href="${pageContext.request.contextPath}/logout"><i class="bi bi-box-arrow-left ikonlogout"></i> Logout</a></li>
                     </ul>
                 </div>
                     <a class="navbar-brand d-lg-none" href="${pageContext.request.contextPath}/home">
@@ -67,21 +103,17 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                        <span class="navbar-toggler-icon"></span>
                     </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+                    
+                <!-- Navbar -->
+                <div class="collapse navbar-collapse napbar" id="navbarNav">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="TransactionInfo">Transaction</a>
+                            <a class="nav-link " href="create">Transaction</a>
                         </li>        
                             <a class="navbar-brand d-none d-lg-block" href="${pageContext.request.contextPath}/home">
                         <img src="${pageContext.request.contextPath}/img/logolur.svg" width="50" height="50" class="d-inline-block align-top" alt="logo"></a>
                         <li class="nav-item">
-                            <a class="nav-link " href="#">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link ">Contact</a>
+                            <a class="nav-link " href="transaction">Manage Books</a>
                         </li>
                     </ul>
                 </div>
