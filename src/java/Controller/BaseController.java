@@ -6,7 +6,6 @@
 package Controller;
 import Config.DBConnection;
 import com.sun.rowset.CachedRowSetImpl;
-
 import java.sql.*;
 import java.util.Map;
 /**
@@ -56,6 +55,7 @@ public class BaseController {
             return null;
         }
     }
+    
       public boolean preparedStatement(Map<Integer, Object> map, String sql) {
         try {
             Connection con = koneksi.open();
