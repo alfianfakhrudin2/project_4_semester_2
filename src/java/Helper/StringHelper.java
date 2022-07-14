@@ -1,20 +1,26 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package Helper;
 
 /**
  *
- * @author Benaya
+ * @author user
  */
 public class StringHelper {
     
-    public static String modifyDateIntoDatepicker(String Return_Date) {
-        String[] splitted = Return_Date.split("-");
-        Return_Date = splitted[1] + "/" + splitted[2] + "/" +  splitted[0] ;
+    public static String parseLikeQuery(String query) {
+        return "%" + query + "%";
+    }
+    
+    
+    public static String modifyDateIntoDatepicker(String return_date) {
+        String[] splitted = return_date.split("-");
+        return_date = splitted[1] + "/" + splitted[2] + "/" +  splitted[0] ;
         
-        return Return_Date;
+        return return_date;
     }
     public static String modifyDateIntoDatepickers(String Borrow_Date) {
         String[] splitted = Borrow_Date.split("-");
