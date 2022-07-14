@@ -14,6 +14,27 @@
         <jsp:include page='layouts/head.jsp'>
             <jsp:param name="title" value="Homepage" />
         </jsp:include>
+        <style>
+            :root{
+             --primary : #edf2fc;
+             --fonts: #212121;
+             --table: #282a36;
+             --fonts1: whitesmoke;
+            }
+            .modegelap {
+              --primary: #282a36;
+              --fonts: whitesmoke;
+              --fonts1: #212121;
+              --table: #fff;
+              --dd: #2C3639;
+            }
+            body{
+                background: var(--primary);
+            }
+            .jdul{
+                color: var(--fonts);
+            }
+        </style>
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     </head>
     <body class="d-flex flex-column h-100">
@@ -39,12 +60,12 @@
         <!-- Begin page content -->
         <main class="flex-shrink-0">
           <div class="container">
-            <h1 class="mt-5">Peminjaman Buku Libraryum</h1>
+            <h1 class="mt-5 jdul">Peminjaman Buku Libraryum</h1>
             <div class="row pt-5">
                     <div class="col-6">
                         <form action="index" method="GET">
                             <div class="mb-3">
-                                <label class="form-label">Search</label>
+                                <label class="form-label jdul">Search</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="search" value="<%= search%>" />
                                     <span class="input-group-append">
@@ -59,7 +80,7 @@
                 </div>
             <div class="row pt-5">
                 <div class="col-12">
-                    <table class="table table-striped table-hover">
+                    <table class="table jdul">
                         <thead>
                             <tr>
                                 <th>Books ID.</th>
@@ -98,5 +119,6 @@
         
         <jsp:include page='layouts/footer.jsp'></jsp:include>
         <jsp:include page='layouts/scripts.jsp'></jsp:include>
+        <jsp:include page='layouts/darkmode.js'></jsp:include>
     </body>
 </html>
