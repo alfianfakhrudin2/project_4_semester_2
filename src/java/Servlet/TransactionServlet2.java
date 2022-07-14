@@ -67,13 +67,13 @@ public class TransactionServlet2 extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String Books_ID = request.getParameter("id");
+            String id = request.getParameter("id");
             String Borrower_Name = request.getParameter("borrower_name");
             String Borrow_Date = request.getParameter("borrow_date");
             String Return_Date = request.getParameter("return_date");
 
             TransModel model = new TransModel();
-            model.setBooks_ID(Books_ID);
+            model.setId(id);
             model.setBorrower_Name(Borrower_Name);
             model.setBorrow_Date(Borrow_Date);
             model.setReturn_Date(Return_Date);
