@@ -1,7 +1,13 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controller;
 
+import Helper.StringHelper;
 import java.sql.ResultSet;
-import BooksQuery.TranQuery;
+import Query.TranQuery;
 import Model.TransModel;
 import java.text.ParseException;
 import java.util.HashMap;
@@ -23,15 +29,24 @@ public class TranController extends BaseController {
     public boolean create(TransModel model) throws ParseException {
         
         Map<Integer, Object> map = new HashMap<>();
-        map.put(1, model.getBooks_ID());
+        map.put(1, model.getId());
         map.put(2, model.getBorrower_Name());
         map.put(3, model.getBorrow_Date());
         map.put(4, model.getReturn_Date());
         
         String sql = this.querytran.creates;
-        
+        System.out.println(map);
         return this.preparedStatement(map, sql);
     }
+    public ResultSet getByName(String name) {
+        String sql = this.querytran.getByName;
+        
+        Map<Integer, Object> map = new HashMap<>();
+        map.put(1, StringHelper.parseLikeQuery(name));
+        
+        return this.getWithParameter(map, sql);
+    }
+    
     
     public ResultSet getById(String Books_ID) {
         String sql = this.querytran.getById;
@@ -42,17 +57,17 @@ public class TranController extends BaseController {
         return this.getWithParameter(map, sql);
     }
     
-    public boolean update(String Books_ID, TransModel model) throws ParseException {
+    public boolean update(String id, TransModel model) throws ParseException {
         
         Map<Integer, Object> map = new HashMap<>();
-        map.put(1, model.getBooks_ID());
-        map.put(2, model.getBorrower_Name());
-        map.put(3, model.getBorrow_Date());
-        map.put(4, model.getReturn_Date());
-     
+        
+        map.put(1, model.getBorrower_Name());
+        map.put(2, model.getBorrow_Date());
+        map.put(3, model.getReturn_Date());
+        map.put(4, id);
         
         String sql = this.querytran.update;
-        
+         System.out.println(map);
         return this.preparedStatement(map, sql);
     }
     
@@ -67,4 +82,3 @@ public class TranController extends BaseController {
        
 
 }
-
