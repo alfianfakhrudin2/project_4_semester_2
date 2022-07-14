@@ -168,3 +168,18 @@ and open the template in the editor.
         transform: translateY(-3px);
     }
 }
+
+.saturn,
+.saturn-2,
+.hover {
+    animation: hover 2s infinite ease-in-out alternate;
+}
+
+@keyframes hover {
+    0% {
+        transform: translateY(3px);
+    }
+    100% {
+        transform: translateY(-3px);
+    }
+}
