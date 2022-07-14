@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package Model;
 
@@ -10,7 +11,7 @@ package Model;
  */
 public class TransModel {
        
-    private String Id;
+    private String id;
     private String Borrower_Name;
     private String Borrow_Date;
     private String Return_Date;
@@ -47,12 +48,13 @@ public class TransModel {
         return Borrower_Name;
     }
     
-    public void setBooks_ID(String Id) {
-        this.Id = Id;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getBooks_ID() {
-        return Id;
+    public String getId() {
+        return id;
     }
 
 }
+
