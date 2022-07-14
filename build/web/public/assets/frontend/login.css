@@ -1,0 +1,98 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 12, 2022, 9:53:27 AM
+    Author     : User
+*/
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap');
+    @import '~mdb-ui-kit/css/mdb.min.css';
+    .pp{
+       background: linear-gradient(120deg,#2980b9, #8e44ad);
+       margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg,#2980b9, #8e44ad);
+    height: 100vh;
+    overflow: hidden;
+    }
+    
+    .title{
+        font-size: 2rem;
+        font-family: 'Hammersmith One', sans-serif;
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 1px solid silver;
+    }
+    form .kolom{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+    }
+    .kolom input{
+      width: 100%;
+      padding: 0 5px;
+      height: 40px;
+      font-size: 16px;
+      border: none;
+      background: none;
+      outline: none;
+    }
+    .kolom label{
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      color: #adadad;
+      transform: translateY(-50%);
+      font-size: 16px;
+      pointer-events: none;
+      transition: .5s;
+    }
+    .kolom span::before{
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #2691d9;
+      transition: .5s;
+    }
+    .kolominput:focus ~ label,
+    .kolom input:valid ~ label{
+      top: -5px;
+      color: #2691d9;
+    }
+    .kolom input:focus ~ span::before,
+    .kolom input:valid ~ span::before{
+      width: 100%;
+    }
+    .bungkusadmin{
+        align-items: center;
+        margin-left: 8.8rem;
+    }
+    .btn {
+    flex: 1 1 auto;
+    margin: 0px 50px;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    font-size: 1rem;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    }
+    .btn:hover {
+    background-position: right center; /* change the direction of the change here */
+    }
+    
+    .design {
+    background-image: linear-gradient(to right, #348AC7 0%, #7474BF 51%, #fbc2eb 100%);
+    }
+    .lepi{
+        font-family: 'Handlee', cursive;
+    }
