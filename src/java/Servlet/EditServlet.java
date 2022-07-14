@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Hudya
+ * @author user
  */
 public class EditServlet extends HttpServlet {
 
@@ -35,7 +35,7 @@ public class EditServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            RequestDispatcher dispatch = request.getRequestDispatcher("/views/EditTransaction.jsp");
+            RequestDispatcher dispatch = request.getRequestDispatcher("/views/edit.jsp");
             dispatch.forward(request, response);
         }
     }
@@ -67,22 +67,25 @@ public class EditServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String Books_ID = request.getParameter("id");
-            String Borrower_Name = request.getParameter("borrower_name");
-            String Borrow_Date = request.getParameter("borrow_date");
-            String Return_Date = request.getParameter("return_date");
+            String id = request.getParameter("id");
+            String borrower_name = request.getParameter("borrower_name");
+            String borrow_date = request.getParameter("borrow_date");
+            String return_date = request.getParameter("return_date");
             
+            System.out.println("sampe snii gak si1");
 
             TransModel model = new TransModel();
-            model.setBooks_ID(Books_ID);
-            model.setBorrower_Name(Borrower_Name);
-            model.setBorrow_Date(Borrow_Date);
-            model.setReturn_Date(Return_Date);
-           
+            
+            model.setBorrower_Name(borrower_name);
+            model.setBorrow_Date(borrow_date);
+            model.setReturn_Date(return_date);
+            
+           System.out.println("sampe snii gak si2");
 
             TranController pc = new TranController();
-            Boolean res = pc.update(Books_ID, model);
+            Boolean res = pc.update(id,model);
 
+            System.out.println("sampe snii gak si");
 
             if (res) {
                 response.sendRedirect("transaction");
